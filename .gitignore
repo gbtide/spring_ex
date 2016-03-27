@@ -1,0 +1,23 @@
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# build result
+out/
+build/
+bin/
+target/
+deploy/
+properties/
+
+# javascript bundle
+**/WEB-INF/lib/
+
+# spring
+.springBeans
