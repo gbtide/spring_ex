@@ -1,6 +1,10 @@
 package com.spring.ex.vo;
 
-public class ProductVO {
+import com.spring.ex.common.BaseObject;
+
+public class ProductVO extends BaseObject {
+	private static final long serialVersionUID = -1550133109731872322L;
+	
 	private String name;
 	private double price;
 	
@@ -22,8 +26,4 @@ public class ProductVO {
 		this.price = price;
 	}
 
-	@Override
-	public String toString() {
-		return ProductVO.class.getSuperclass() + " : " + name + " / " + price;
-	}
 }
