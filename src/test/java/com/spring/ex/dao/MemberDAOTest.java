@@ -32,6 +32,16 @@ public class MemberDAOTest {
 		System.out.println("=== memberDAO.getTime() : " + memberDAO.getTime());
 	}
 	
+	@Test
+	public void testReadMember() throws Exception {
+		System.out.println("=== memberDAO.readMember" + memberDAO.readMember("user00"));
+	}
+	
+	@Test
+	public void testReadWithPW() throws Exception {
+		System.out.println("=== memberDAO.readWithPW" + memberDAO.readWithPW("user00", "user00"));
+	}
+	
 //	@Test
 	public void testInsertMember() throws Exception {
 		System.out.println("=== insert some member : ");
