@@ -39,18 +39,14 @@ requirejs.config({
 		},
 		'angular-bootstrap' : {
 			deps : ['angular', 'bootstrap', 'angular-animate']
-		},
-		'app' : {
-			deps: ['angular', 'angular-bootstrap']
 		}
 	}
 });
 
-requirejs(['requirejs-domReady', 'jquery', 'angular', 'angular-animate', 'bootstrap', 'angular-bootstrap', 'app'], function(domReady) {
+requirejs(['requirejs-domReady', 'app'], function(domReady, app) {
 	domReady(function() {
 		console.log('== end domReady, bootstrap angularJS');
-		
-		angular.bootstrap(document, [ 'abtest.admin' ]);
+		app.init();
 	});
 
 });
