@@ -28,24 +28,28 @@ requirejs.config({
 			deps : ['jquery'],
 			exports : 'angular'
 		},
-		'ngToast' : {
-			deps : ['angular-sanitize', 'angular-animate']
-		},
 		'bootstrap' : {
 			deps: ['jquery']
 		},
 		'angular-animate' : {
 			deps : ['angular']
 		},
+		'angular-route' : {
+			deps : ['angular']
+		},
 		'angular-bootstrap' : {
 			deps : ['angular', 'bootstrap', 'angular-animate']
+		},
+		'ngToast' : {
+			deps : ['angular-sanitize', 'angular-animate']
 		}
 	}
 });
 
-requirejs(['requirejs-domReady', 'app'], function(domReady, app) {
+// app. route의 경우, baseUrl(따로 설정하지 않았으면, main.js folder path)을 기준으로 js파일을 가져옴.)
+requirejs(['requirejs-domReady', 'app', 'route'], function(domReady, app) {
 	domReady(function() {
-		console.log('== end domReady, bootstrap angularJS');
+		console.log('= [main.js] domReady_callback');
 		app.init();
 	});
 
