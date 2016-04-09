@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- memo. ui-bootstrap을 쓰려면 head에 boostrap.min.css을 선언해주어야 함.(도데체 왜!?) -->
+	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+	
+	<!-- design -->
+	<link rel="stylesheet" type="text/css" href="/css/AdminLTE.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/skin/skin-blue.min.css">
+	
+</head>
+<body class="skin-blue sidebar-mini">
+
+	<header class="main-header">
+	  <a href="/html/index.html" class="logo">
+	    Admin
+	  </a>
+	  
+	  <!-- Header Navbar: style can be found in header.less -->
+	  <nav class="navbar navbar-static-top" role="navigation">
+	    
+	  </nav>
+	</header>
+
+	<div class="main-sidebar">
+	  <!-- Inner sidebar -->
+	  <div class="sidebar">
+
+	    <!-- Search Form (Optional) -->
+	    <form action="#" method="get" class="sidebar-form">
+	      <div class="input-group">
+	        <input type="text" name="q" class="form-control" placeholder="Search...">
+	        <span class="input-group-btn">
+	          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+	        </span>
+	      </div>
+	    </form><!-- /.sidebar-form -->
+	
+	    <!-- Sidebar Menu -->
+	    <ul class="sidebar-menu">
+	      <li class="header">MENU</li>
+	      
+	      <li><a href="#"><span>Another Link</span></a></li>
+	      <li class="treeview">
+	        <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+	        <ul class="treeview-menu">
+	          <li><a href="#">Link in level 2</a></li>
+	          <li><a href="#">Link in level 2</a></li>
+	        </ul>
+	      </li>
+	    </ul><!-- /.sidebar-menu -->
+	
+	  </div><!-- /.sidebar -->
+	</div><!-- /.main-sidebar -->
+
+	<script src="/vendor/requirejs/require.js" data-main="/js/main.js"></script>
+
+</body>
+</html>
