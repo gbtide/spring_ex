@@ -23,8 +23,8 @@ public class BoardDAOImple implements IBoardDAO {
 	}
 
 	@Override
-	public BoardVO read(Integer btn) throws Exception {
-		return session.selectOne(NAMESPACE + ".read", btn);
+	public BoardVO read(Integer bno) throws Exception {
+		return session.selectOne(NAMESPACE + ".read", bno);
 	}
 
 	@Override
