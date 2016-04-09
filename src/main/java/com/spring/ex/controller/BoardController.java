@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.service.IBoardService;
 import com.spring.ex.vo.BoardVO;
@@ -25,12 +26,17 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registPOST(BoardVO vo, Model model) throws Exception {
+	public String registPOST(BoardVO vo, Model model, RedirectAttributes attr) throws Exception {
 		logger.info("register post ......");
 		logger.info(vo.toString());
 
 		boardService.regist(vo);
-		model.addAttribute("result", "success");
-		return "/board/success";
+		
+		return "redirect:/html/index.html#!/listAll?result=SUCCESS";
+	}
+	
+	@RequestMapping(value="/listAll", method=RequestMethod.GET) 
+	public void listAll(Model model) throws Exception {
+		logger.info("show all list ......");
 	}
 }

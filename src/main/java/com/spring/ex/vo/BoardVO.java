@@ -2,7 +2,10 @@ package com.spring.ex.vo;
 
 import java.util.Date;
 
-public class BoardVO {
+import com.spring.ex.common.BaseObject;
+
+public class BoardVO extends BaseObject {
+	private static final long serialVersionUID = 2079451288971337718L;
 
 	private Integer bno;
 	
