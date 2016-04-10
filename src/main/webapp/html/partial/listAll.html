@@ -2,11 +2,11 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Dashboard <small>Control panel</small>
+			ListAll <small>Control panel</small>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-			<li class="active">Dashboard</li>
+			<li class="active">ListAll</li>
 		</ol>
 	</section>
 
@@ -17,13 +17,20 @@
 				<h3 class="box-title">LIST ALL PAGE</h3>
 			</div>
 			<div class="box-body">
-				<table class="table table-boardered">
+				<table class="table table-bordered">
 					<tr>
 						<th style="width: 10px">BNO</th>
 						<th>TITLE</th>
 						<th>WRITER</th>
 						<th>REGDATE</th>
 						<th style="width: 40px">VIEWCNT</th>
+					</tr>
+					<tr ng-repeat="book in bookList">
+						<td>{{book.bno}}</td>
+						<td><a href='#!/read?bno={{book.bno}}'>{{book.title}}</a></td>
+						<td>{{book.writer}}</td>
+						<td>{{book.regdate | date:'yyyy-MM-dd HH:mm'}}</td>
+						<td><span class="badge bg-aqua-active">{{book.viewcnt}}</span></td>
 					</tr>
 				</table>
 			</div>
