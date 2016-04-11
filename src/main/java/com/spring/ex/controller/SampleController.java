@@ -36,7 +36,7 @@ public class SampleController {
 	@RequestMapping("/show")
 	public String showJSP(@ModelAttribute("msg") String msg, String user) {
 		System.out.println("=== do showJSP! : " + msg + " / " + user);
-		return "result";
+		return "error_common";
 	}
 	
 	@RequestMapping("/model")

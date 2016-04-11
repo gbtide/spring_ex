@@ -46,6 +46,9 @@ public class BoardController {
 	@ResponseBody
 	public ListResponse<BoardVO> listAll(Model model) throws Exception {
 		logger.info("show all list ......");
+		
+//		BoardVO nullVO = null;
+//		nullVO.setBno(100);
 
 		// model.addAttribute("list", boardService.listAll());
 		List<BoardVO> list = boardService.listAll();

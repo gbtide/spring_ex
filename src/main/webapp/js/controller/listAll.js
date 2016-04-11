@@ -19,7 +19,8 @@ define(['app'], function(app) {
 			
 			result.success(function(res) {
 				if (!res || res.code != 0) {
-					alert('response err : ' + res.message);
+//					alert('response err : ' + res.message);
+					console.log('response err : ' + res.message);
 					return;
 				}
 				$scope.bookList = res.list;
