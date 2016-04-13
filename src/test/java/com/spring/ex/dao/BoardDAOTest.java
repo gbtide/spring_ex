@@ -1,5 +1,7 @@
 package com.spring.ex.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -9,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.spring.ex.model.Criteria;
 import com.spring.ex.vo.BoardVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -46,4 +49,27 @@ public class BoardDAOTest {
 	public void testDelete() throws Exception {
 		dao.delete(1);
 	}
+	
+//	@Test
+	public void testListPage() throws Exception {
+		int page = 2;
+		List<BoardVO> list = dao.listPage(page);
+		
+		for (BoardVO boardVO : list) {
+			logger.info(boardVO.getBno() + " : " + boardVO.getTitle());
+		}
+	}
+	
+//	@Test
+	public void testListCriteria() throws Exception {
+		Criteria cri = new Criteria();
+		cri.setPage(2);
+		cri.setPerPageNum(7);
+		
+		List<BoardVO> list = dao.listCriteria(cri);
+		for (BoardVO vo : list) {
+			logger.info(vo.getBno() + " : " + vo.getTitle());
+		}
+	}
+
 }

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.ex.model.Criteria;
 import com.spring.ex.vo.BoardVO;
 
 @Repository
@@ -40,6 +41,25 @@ public class BoardDAOImple implements IBoardDAO {
 	@Override
 	public List<BoardVO> listAll() throws Exception {
 		return session.selectList(NAMESPACE + ".listAll");
+	}
+
+	@Override
+	public List<BoardVO> listPage(int page) throws Exception {
+		if (page <= 0) {
+			page = 1;
+		}
+		page = (page - 1) * 10;
+		return session.selectList(NAMESPACE + ".listPage", page);
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria criteria) throws Exception {
+		return session.selectList(NAMESPACE + ".listCriteria", criteria);
+	}
+
+	@Override
+	public int countPaging(Criteria criteria) throws Exception {
+		return session.selectOne(NAMESPACE + ".countPaging");
 	}
 
 }

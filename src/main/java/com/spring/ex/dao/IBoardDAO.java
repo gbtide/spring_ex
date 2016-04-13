@@ -2,6 +2,7 @@ package com.spring.ex.dao;
 
 import java.util.List;
 
+import com.spring.ex.model.Criteria;
 import com.spring.ex.vo.BoardVO;
 
 public interface IBoardDAO {
@@ -15,5 +16,11 @@ public interface IBoardDAO {
 	public void delete(Integer bno) throws Exception;
 	
 	public List<BoardVO> listAll() throws Exception;
+	
+	public List<BoardVO> listPage(int page) throws Exception;
 
+	public List<BoardVO> listCriteria(Criteria criteria) throws Exception;
+	
+	public int countPaging(Criteria criteria) throws Exception;
+	
 }

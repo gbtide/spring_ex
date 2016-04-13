@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.ex.model.Criteria;
 import com.spring.ex.model.ItemResponse;
 import com.spring.ex.model.ListResponse;
+import com.spring.ex.model.PageMaker;
+import com.spring.ex.model.PageResponse;
 import com.spring.ex.model.Response;
 import com.spring.ex.service.IBoardService;
 import com.spring.ex.vo.BoardVO;
@@ -47,9 +51,6 @@ public class BoardController {
 	public ListResponse<BoardVO> listAll(Model model) throws Exception {
 		logger.info("show all list ......");
 		
-//		BoardVO nullVO = null;
-//		nullVO.setBno(100);
-
 		// model.addAttribute("list", boardService.listAll());
 		List<BoardVO> list = boardService.listAll();
 
@@ -77,5 +78,37 @@ public class BoardController {
 		boardService.modify(vo);
 		return "redirect:/html/index.html#!/listAll?result=SUCCESS";
 	}	
+	
+	@RequestMapping(value = "/listCri", method = RequestMethod.GET)
+	@ResponseBody
+	public ListResponse<BoardVO> listCri(Criteria criteria, Model model) throws Exception {
+		logger.info("show list Page with Criteria ......");
+		logger.info(" >> criteria : " + criteria);
+		
+		List<BoardVO> list = boardService.listCriteria(criteria);
+		return new ListResponse<BoardVO>(list);
+	}
+	
+	@RequestMapping(value = "/listPage", method = RequestMethod.GET) 
+	@ResponseBody
+	public PageResponse listPage(Criteria criteria, Model model) throws Exception {
+		logger.info("called listPage ......");
+		logger.info(" >> criteria : " + criteria);
+		
+		int itemCount = boardService.listCountCriteria(criteria);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setDisplayPageNum(criteria.getPerPageNum());
+		pageMaker.setCriteria(criteria);
+		pageMaker.setTotalCount(itemCount);
+		
+		List<BoardVO> list = boardService.listCriteria(criteria);
+		PageResponse response = new PageResponse();
+		response.setList(list);
+		response.setPageMaker(pageMaker);
+		
+		System.out.println(" ... Result is : " + response);
+		return response;
+	}
 	
 }

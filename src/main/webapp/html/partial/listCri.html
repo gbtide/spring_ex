@@ -1,0 +1,50 @@
+<div>
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+			ListAll <small>Control panel</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li class="active">ListAll</li>
+		</ol>
+	</section>
+
+	<!-- Main content -->
+	<section class="content">
+		<div class="box box-success">
+			<div class="box-header with-border">
+				<h3 class="box-title">LIST ALL PAGE</h3>
+			</div>
+			<div class="box-body">
+				<table class="table table-bordered">
+					<tr>
+						<th style="width: 10px">BNO</th>
+						<th>TITLE</th>
+						<th>WRITER</th>
+						<th>REGDATE</th>
+						<th style="width: 40px">VIEWCNT</th>
+					</tr>
+					<tr ng-repeat="book in bookList">
+						<td>{{book.bno}}</td>
+						<td><a href='#!/read?bno={{book.bno}}'>{{book.title}}</a></td>
+						<td>{{book.writer}}</td>
+						<td>{{book.regdate | date:'yyyy-MM-dd HH:mm'}}</td>
+						<td><span class="badge bg-aqua-active">{{book.viewcnt}}</span></td>
+					</tr>
+				</table>
+				
+				<!-- memo. 아래를 쓰려면 반드시 ui-bootstrap-tpls를 다운로드 받아야 한다. -->
+				<uib-pagination
+					ng-show="showPagination"
+					boundary-links="true" total-items="totalItems" ng-model="currentPage" 
+					ng-change="pageChanged()" max-size="maxSize" items-per-page="itemsPerPage"
+					class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" 
+					first-text="&laquo;" last-text="&raquo;">
+				</uib-pagination>
+
+			</div>
+			<div class="box-footer">Footer</div>
+		</div>
+	</section>
+</div>

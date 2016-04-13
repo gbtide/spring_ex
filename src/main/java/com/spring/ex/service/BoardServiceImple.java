@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.IBoardDAO;
+import com.spring.ex.model.Criteria;
 import com.spring.ex.vo.BoardVO;
 
 @Service
@@ -37,6 +38,16 @@ public class BoardServiceImple implements IBoardService {
 	@Override
 	public List<BoardVO> listAll() throws Exception {
 		return boardDAO.listAll();
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria criteria) throws Exception {
+		return boardDAO.listCriteria(criteria);
+	}
+
+	@Override
+	public int listCountCriteria(Criteria criteria) throws Exception {
+		return boardDAO.countPaging(criteria);
 	}
 
 }

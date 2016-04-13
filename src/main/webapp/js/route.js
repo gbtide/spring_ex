@@ -1,7 +1,7 @@
 'use strict';
 console.log('### route.js ###');
 
-define(['app', 'controller/temp', 'controller/listAll', 'controller/read'], function(app) {
+define(['app', 'controller/temp', 'controller/listAll', 'controller/read', 'controller/listCri'], function(app) {
 	console.log('= [route.js] define_callback');
 	
 	// angular.bootstrap이 호출된 뒤에 실행 됨
@@ -27,6 +27,11 @@ define(['app', 'controller/temp', 'controller/listAll', 'controller/read'], func
 		$routeProvider.when('/read', {
 			templateUrl : '/html/partial/read.html',
 			controller : 'ReadController'
+		});
+		
+		$routeProvider.when('/listCri', {
+			templateUrl : '/html/partial/listCri.html',
+			controller : 'ListCriController'
 		});
 		
 		$routeProvider.otherwise({

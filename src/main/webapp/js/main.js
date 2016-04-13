@@ -10,7 +10,7 @@ requirejs.config({
 		'angular-sanitize' : '/vendor/angular-sanitize/angular-sanitize.min',
 		
 		'bootstrap' : '/vendor/bootstrap/dist/js/bootstrap.min',
-		'angular-bootstrap' : "/vendor/angular-bootstrap/ui-bootstrap.min",
+		'angular-bootstrap' : "/vendor/angular-bootstrap/ui-bootstrap-tpls.min",
 		
 		'Chart' : '/vendor/Chart.js/Chart.mins',
 		'angular-chart' : '/vendor/angular-chart.js/angular-chart',
