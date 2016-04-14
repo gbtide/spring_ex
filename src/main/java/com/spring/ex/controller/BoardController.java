@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ import com.spring.ex.model.ItemResponse;
 import com.spring.ex.model.ListResponse;
 import com.spring.ex.model.PageMaker;
 import com.spring.ex.model.PageResponse;
+import com.spring.ex.model.PostTestParam;
 import com.spring.ex.model.Response;
 import com.spring.ex.service.IBoardService;
 import com.spring.ex.vo.BoardVO;
@@ -111,4 +113,10 @@ public class BoardController {
 		return response;
 	}
 	
+	@RequestMapping(value = "/postTest", method = RequestMethod.POST) 
+	@ResponseBody
+	public Response postTest(@RequestBody PostTestParam param) throws Exception {
+		logger.info("called postTest ......" + param);
+		return Response.SUCCESS;
+	}
 }
