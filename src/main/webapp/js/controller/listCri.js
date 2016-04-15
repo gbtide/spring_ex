@@ -20,7 +20,7 @@ define(['app'], function(app) {
 		}
 		
 		var requestBookList = function(page, perPageNum) {
-			var requestUrl = '/board/listPage?page=' + page + '&perPageNum=' + perPageNum;
+			var requestUrl = '/abtest/list?page=' + page + '&perPageNum=' + perPageNum;
 			var result = $http.get(requestUrl);
 			
 			result.success(function(res) {
