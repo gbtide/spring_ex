@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.IBoardDAO;
 import com.spring.ex.model.Criteria;
+import com.spring.ex.model.SearchCriteria;
 import com.spring.ex.vo.BoardVO;
 
 @Service
@@ -48,6 +49,16 @@ public class BoardServiceImple implements IBoardService {
 	@Override
 	public int listCountCriteria(Criteria criteria) throws Exception {
 		return boardDAO.countPaging(criteria);
+	}
+
+	@Override
+	public List<BoardVO> listSearchCriteria(SearchCriteria searchCriteria) throws Exception {
+		return boardDAO.listSearch(searchCriteria);
+	}
+
+	@Override
+	public int listSearchCount(SearchCriteria searchCriteria) throws Exception {
+		return boardDAO.listSearchCount(searchCriteria);
 	}
 
 }

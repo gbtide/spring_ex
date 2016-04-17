@@ -3,6 +3,7 @@ package com.spring.ex.dao;
 import java.util.List;
 
 import com.spring.ex.model.Criteria;
+import com.spring.ex.model.SearchCriteria;
 import com.spring.ex.vo.BoardVO;
 
 public interface IBoardDAO {
@@ -22,5 +23,9 @@ public interface IBoardDAO {
 	public List<BoardVO> listCriteria(Criteria criteria) throws Exception;
 	
 	public int countPaging(Criteria criteria) throws Exception;
+	
+	public List<BoardVO> listSearch(SearchCriteria searchCriteria) throws Exception;
+
+	public int listSearchCount(SearchCriteria searchCriteria) throws Exception;
 	
 }

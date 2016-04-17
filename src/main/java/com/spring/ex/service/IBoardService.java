@@ -3,6 +3,7 @@ package com.spring.ex.service;
 import java.util.List;
 
 import com.spring.ex.model.Criteria;
+import com.spring.ex.model.SearchCriteria;
 import com.spring.ex.vo.BoardVO;
 
 public interface IBoardService {
@@ -19,4 +20,9 @@ public interface IBoardService {
 	public List<BoardVO> listCriteria(Criteria criteria) throws Exception;
 	
 	public int listCountCriteria(Criteria criteria) throws Exception;
+	
+	public List<BoardVO> listSearchCriteria(SearchCriteria searchCriteria) throws Exception;
+	
+	public int listSearchCount(SearchCriteria searchCriteria) throws Exception;
+	
 }

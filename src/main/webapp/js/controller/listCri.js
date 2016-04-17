@@ -9,18 +9,30 @@ define(['app'], function(app) {
 		
 		$scope.showPagination = false;
 		
-		var searchResult = $location.search();
+		var urlParam = $location.search();
 		
-		if (!!searchResult && !!searchResult.page && !!searchResult.perPageNum) {
-			$scope.page = searchResult.page;
-			$scope.perPageNum = searchResult.perPageNum;
+		if (!!urlParam && !!urlParam.page && !!urlParam.perPageNum) {
+			$scope.page = urlParam.page;
+			$scope.perPageNum = urlParam.perPageNum;
 		} else {
 			$scope.page = 1;
 			$scope.perPageNum = 10;
 		}
 		
+		// Search Result
+		if (!!urlParam && !!urlParam.searchType && !!urlParam.keyword) {
+			$scope.searchKeywordType = urlParam.searchType;
+			$scope.searchKeyword = urlParam.keyword;
+		}
+		
 		var requestBookList = function(page, perPageNum) {
-			var requestUrl = '/board/listPage?page=' + page + '&perPageNum=' + perPageNum;
+			var requestUrl;
+			if (!$scope.searchKeyword) { 
+				requestUrl = '/board/listPage?page=' + page + '&perPageNum=' + perPageNum;
+			} else {
+				requestUrl = '/sboard/list?page=' + page + '&perPageNum=' + perPageNum +
+							'&searchType=' + $scope.searchKeywordType + '&keyword=' + $scope.searchKeyword;
+			}
 			var result = $http.get(requestUrl);
 			
 			result.success(function(res) {
@@ -56,6 +68,22 @@ define(['app'], function(app) {
 			};
 
 			$scope.showPagination = true;
+		}
+		
+		$scope.onClickSearchButton = function() {
+			console.log('onClickSearchButton : ' + $scope.searchKeyword);
+			var host = $location.protocol() + '://' + location.host + "/";
+			$window.location.href = host + 'html/index.html#!/listCri?' + 
+						'page=' + $scope.currentPage + '&perPageNum=' + $scope.perPageNum +
+						'&searchType=' + $scope.searchKeywordType + '&keyword=' + $scope.searchKeyword;
+		}
+		
+		$scope.searchKeywordTypeList = ['Title', 'Writer', 'Title And Writer'];
+		if (!$scope.searchKeywordType) {
+			$scope.searchKeywordType = $scope.searchKeywordTypeList[0];
+		}
+		$scope.onClickSearchKeywordType = function(searchKeywordType) {
+			$scope.searchKeywordType = searchKeywordType;
 		}
 	})
 	

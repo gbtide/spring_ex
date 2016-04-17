@@ -12,6 +12,38 @@
 
 	<!-- Main content -->
 	<section class="content">
+	
+		<!-- Search Tab -->
+		<div class="box box-info container">
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="btn-group" uib-dropdown dropdown-append-to-body style="margin-top: 10px;">
+			            <button id="btn-append-to-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
+			            	{{searchKeywordType}} <span class="caret"></span>
+			            </button>
+			            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-to-body">
+			              <li role="menuitem" ng-repeat="searchKeywordType in searchKeywordTypeList">
+			              	<a ng-click="onClickSearchKeywordType(searchKeywordType)">{{searchKeywordType}}</a>
+			              </li>
+			            </ul>
+			    	</div>
+				</div>
+			
+				<div class="box-body col-sm-10" style="width: 400px;">
+		        	<div class="input-group">
+		        		<input id="searchTab" type="text" class="form-control" placeholder="Search.." ng-model="searchKeyword">
+		           		<div class="input-group-btn">
+				        	<button id="searchButton" type="button" class="btn btn-primary btn-flat" ng-click="onClickSearchButton()"
+				        		style="border-color: rgb(0, 192, 239); background-color: rgb(0, 192, 239);">
+				            		Search
+				       		</button>
+		        		</div>
+		        	</div>
+		    	</div>
+	    	</div>
+	    </div>
+	
+		<!-- Board -->
 		<div class="box box-success">
 			<div class="box-header with-border">
 				<h3 class="box-title">LIST ALL PAGE</h3>

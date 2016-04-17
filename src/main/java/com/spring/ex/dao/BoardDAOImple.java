@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.ex.model.Criteria;
+import com.spring.ex.model.SearchCriteria;
 import com.spring.ex.vo.BoardVO;
 
 @Repository
@@ -59,7 +60,17 @@ public class BoardDAOImple implements IBoardDAO {
 
 	@Override
 	public int countPaging(Criteria criteria) throws Exception {
-		return session.selectOne(NAMESPACE + ".countPaging");
+		return session.selectOne(NAMESPACE + ".countPaging", criteria);
+	}
+
+	@Override
+	public List<BoardVO> listSearch(SearchCriteria searchCriteria) throws Exception {
+		return session.selectList(NAMESPACE + ".listSearch", searchCriteria);
+	}
+
+	@Override
+	public int listSearchCount(SearchCriteria searchCriteria) throws Exception {
+		return session.selectOne(NAMESPACE + ".listSearchCount", searchCriteria);
 	}
 
 }
